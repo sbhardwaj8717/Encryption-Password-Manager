@@ -60,14 +60,15 @@ public class WelcomePage extends JFrame implements ActionListener{
 		
 		
 		setLayout(null);
-		setBounds(500, 200, 700, 600);
+		setBounds(500, 130, 700, 600);
 		setVisible(true);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == b1) {
-			
+			new NewUser().setVisible(true);
+			this.setVisible(false);
 		}else if(ae.getSource() == b2) {
 			
 		}
