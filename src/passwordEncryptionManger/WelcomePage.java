@@ -70,7 +70,8 @@ public class WelcomePage extends JFrame implements ActionListener{
 			new NewUser().setVisible(true);
 			this.setVisible(false);
 		}else if(ae.getSource() == b2) {
-			
+			new Login().setVisible(true);
+			this.setVisible(false);
 		}
 	}
 	
