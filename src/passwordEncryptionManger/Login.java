@@ -9,14 +9,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 
 
 
 public class Login extends JFrame implements ActionListener {
 
 	JButton b1,b2;
-	JTextField t1,t2,t3,t4;
+	JTextField t1;
+	JPasswordField t2;
 	
 	public Login() {
 	ImageIcon img = new ImageIcon(ClassLoader.getSystemResource("image/newUser.png"));
@@ -41,7 +44,7 @@ public class Login extends JFrame implements ActionListener {
 	l2.setForeground(Color.WHITE);
 	l2.setBounds(30, 235, 180, 30);
 	add(l2);
-	t2 = new JTextField();
+	t2 = new JPasswordField();
 	t2.setBounds(230, 235, 150, 30);
 	t2.setBackground(Color.black);
 	t2.setForeground(Color.white);
@@ -78,7 +81,8 @@ public class Login extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == b1) {
-			
+			new LoggedIn().setVisible(true);
+			this.setVisible(false);
 		}else if(ae.getSource() == b2) {
 			new WelcomePage().setVisible(true);
 			this.setVisible(false);

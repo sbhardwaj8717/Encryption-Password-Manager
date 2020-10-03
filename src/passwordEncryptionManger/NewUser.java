@@ -9,12 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class NewUser extends JFrame implements ActionListener {
 
 	JButton b1,b2;
-	JTextField t1,t2,t3,t4;
+	JTextField t1,t2;
+	JPasswordField t3,t4;
 	
 	public NewUser() {
 	ImageIcon img = new ImageIcon(ClassLoader.getSystemResource("image/newUser.png"));
@@ -51,7 +53,7 @@ public class NewUser extends JFrame implements ActionListener {
 	l3.setForeground(Color.WHITE);
 	l3.setBounds(30, 280, 180, 30);
 	add(l3);
-	t3 = new JTextField();
+	t3 = new JPasswordField();
 	t3.setBounds(240, 280, 150, 30);
 	t3.setBackground(Color.black);
 	t3.setForeground(Color.white);
@@ -63,7 +65,7 @@ public class NewUser extends JFrame implements ActionListener {
 	l4.setForeground(Color.WHITE);
 	l4.setBounds(30, 325, 180, 30);
 	add(l4);
-	t4 = new JTextField();
+	t4 = new JPasswordField();
 	t4.setBounds(240, 325, 150, 30);
 	t4.setBackground(Color.black);
 	t4.setForeground(Color.white);
