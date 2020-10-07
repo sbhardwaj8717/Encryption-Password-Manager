@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -52,10 +54,6 @@ public class Login extends JFrame implements ActionListener {
 	add(t2);
 	
 	
-	
-	
-	
-	
 	b1 = new JButton("LOGIN");
 	b1.setBounds(70, 305, 100, 40);
 	b1.setForeground(Color.white);
@@ -81,8 +79,18 @@ public class Login extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == b1) {
-			new LoggedIn().setVisible(true);
-			this.setVisible(false);
+			Conn c = new Conn();
+			String id = t1.getText();
+			String pass = t2.getText();
+			String str = "select * from user where username = '"+id+"' and password = '"+pass+"'";
+			ResultSet rs = c.s.executeQuery(str);
+			if(rs.next()) {
+				new LoggedIn().setVisible(true);
+				this.setVisible(false);
+			}else {
+				 JOptionPane.showMessageDialog(null, "Something went worng");
+			}
+			
 		}else if(ae.getSource() == b2) {
 			new WelcomePage().setVisible(true);
 			this.setVisible(false);

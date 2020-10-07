@@ -115,7 +115,8 @@ public class NewUser extends JFrame implements ActionListener {
     	    		String encpass1 = t4.getText();
     	    	
     	    		if(encpass.contentEquals(encpass1)) {
-    	    			String str1 = "insert into user values('"+username+"','"+encpass+"')";    	    	
+    	    			String str1 = "insert into user values('"+username+"','"+encpass+"')";    	   
+    	    			c.s.executeUpdate(str1);
     	    			JOptionPane.showMessageDialog(null, "Welome, "+username+" ...!!");
     	    			new LoggedIn().setVisible(true);
     	    			this.setVisible(false);
