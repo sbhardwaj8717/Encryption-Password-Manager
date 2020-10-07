@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -36,7 +38,7 @@ public class NewUser extends JFrame implements ActionListener {
 	t1.setFont(new Font("Tahuma",Font.BOLD ,12));
 	add(t1);
 	
-	JLabel l2 = new JLabel("MASTER KEY                 :");
+	JLabel l2 = new JLabel("MASTER KEY                 :");				// master = jnrt7864ksfvn
 	l2.setFont(new Font("Tahuma", Font.BOLD, 15));
 	l2.setForeground(Color.WHITE);
 	l2.setBounds(30, 235, 180, 30);
@@ -61,7 +63,7 @@ public class NewUser extends JFrame implements ActionListener {
 	add(t3);
 	
 	JLabel l4 = new JLabel("CONFIRM PASSWORD :");
-	l4.setFont(new Font("Tahuma", Font.BOLD, 15));
+	l4.setFont(new Font("Tahuma", Font.BOLD, 15));		// justchill8717bro
 	l4.setForeground(Color.WHITE);
 	l4.setBounds(30, 325, 180, 30);
 	add(l4);
@@ -95,11 +97,45 @@ public class NewUser extends JFrame implements ActionListener {
 	setVisible(true);
 	
 	}
+
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == b1) {
-			
+			String key = t2.getText();
+		    Conn c = new Conn();
+    	    String str =  "select * from master where master = '"+key+"'";
+    	    try {
+    	    	ResultSet rs =c.s.executeQuery(str);
+
+    	    	if(rs.next()){
+    	    		String username= t1.getText();
+    	    		String encpass = t3.getText();
+    	    		String encpass1 = t4.getText();
+    	    	
+    	    		if(encpass.contentEquals(encpass1)) {
+    	    			String str1 = "insert into user values('"+username+"','"+encpass+"')";    	    	
+    	    			JOptionPane.showMessageDialog(null, "Welome, "+username+" ...!!");
+    	    			new LoggedIn().setVisible(true);
+    	    			this.setVisible(false);
+    	    			
+    	    		}else {
+    	    			JOptionPane.showMessageDialog(null, "Passwords not matched");
+    	    		}
+    	    		
+
+    	    	}else{
+    	    	JOptionPane.showMessageDialog(null, "Master key is not correct");
+    	    	new WelcomePage().setVisible(true);
+    	    	this.setVisible(false);
+    	    }
+    	    
+    	    }catch (Exception e) {
+    	    	System.out.println(e);
+    	    }
+		
+		
 		}else if(ae.getSource() == b2) {
 			new WelcomePage().setVisible(true);
 			this.setVisible(false);
