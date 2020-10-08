@@ -83,12 +83,17 @@ public class Login extends JFrame implements ActionListener {
 			String id = t1.getText();
 			String pass = t2.getText();
 			String str = "select * from user where username = '"+id+"' and password = '"+pass+"'";
-			ResultSet rs = c.s.executeQuery(str);
-			if(rs.next()) {
-				new LoggedIn().setVisible(true);
-				this.setVisible(false);
-			}else {
-				 JOptionPane.showMessageDialog(null, "Something went worng");
+			try {
+				ResultSet rs = c.s.executeQuery(str);
+				if(rs.next()) {
+					new LoggedIn().setVisible(true);
+					this.setVisible(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "Something went worng");
+				}
+				
+			} catch (Exception e) {
+				
 			}
 			
 		}else if(ae.getSource() == b2) {
