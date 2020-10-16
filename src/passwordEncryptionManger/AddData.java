@@ -60,8 +60,8 @@ public class AddData extends JFrame{
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-			new AddData();
-	}
+//	public static void main(String[] args) {
+//			new AddData();
+//	}
 
 }
