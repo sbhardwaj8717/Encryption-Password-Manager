@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 public class LoggedIn extends JFrame implements ActionListener{
 
 	
-	JButton b1,b2,b3,b4, earlAz1;
+	JButton b1,b2,b3,b4, imgBtn;
 	public LoggedIn() {
 		
 		// SAVE PASSWORD, GET PASSWORD, VIEW ALL IN ENCRYPTION FORMAT + ORIGINAL, UPDATE CHANGES
@@ -66,14 +66,14 @@ public class LoggedIn extends JFrame implements ActionListener{
 		
 		
 		ImageIcon earlAz = new ImageIcon(ClassLoader.getSystemResource("image/earlaz.png"));
-		earlAz1= new JButton(earlAz);
-		earlAz1.setBounds(185, 350, 70, 70);
-		earlAz1.addActionListener(this);
-		earlAz1.setOpaque(false);
-		earlAz1.setBackground(new Color(0,0,0,0));
-		earlAz1.setBorder(null);
+		imgBtn= new JButton(earlAz);
+		imgBtn.setBounds(185, 350, 70, 70);
+		imgBtn.addActionListener(this);
+		imgBtn.setOpaque(false);
+		imgBtn.setBackground(new Color(0,0,0,0));
+		imgBtn.setBorder(null);
 //		earlAz1.mouseEnter(null,HAND_CURSOR , HAND_CURSOR);
-		img1.add(earlAz1);
+		img1.add(imgBtn);
 		
 		setLayout(null);
 		setBounds(550, 200, 474, 474);
@@ -93,7 +93,7 @@ public class LoggedIn extends JFrame implements ActionListener{
 			
 		}else if(ae.getSource() == b4) {
 			
-		}else if(ae.getSource() == earlAz1) {
+		}else if(ae.getSource() ==imgBtn) {
 			new WelcomePage().setVisible(true);
 			this.setVisible(false);
 		}
