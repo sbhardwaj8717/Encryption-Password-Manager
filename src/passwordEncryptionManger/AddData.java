@@ -3,17 +3,22 @@ package passwordEncryptionManger;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class AddData extends JFrame{
+public class AddData extends JFrame implements ActionListener{
 	
-	JTextField t1,t2,t3,t4;
-	
+	JTextField t1,t2,t4;
+	JPasswordField t3;
 	JButton b1,b2;
 
 	public AddData() {
@@ -32,7 +37,7 @@ public class AddData extends JFrame{
 		imgLab.add(l1);
 		
 
-		JLabel l2 =new  JLabel("PREFERENCE      :");
+		JLabel l2 =new  JLabel("TYPE                      :");
 		l2.setForeground(Color.black);
 		l2.setFont(new Font("Tahuma", Font.BOLD,15));
 		l2.setBounds(360, 130, 150, 50);
@@ -58,7 +63,7 @@ public class AddData extends JFrame{
 		l4.setFont(new Font("Tahuma", Font.BOLD,15));
 		l4.setBounds(360, 250, 150, 50);
 		imgLab.add(l4);
-		t3 = new JTextField();
+		t3 = new JPasswordField();
 		t3.setBounds(525, 250, 240, 33);
 		t3.setFont(new Font("Tahuma", Font.BOLD,15));
 		imgLab.add(t3);
@@ -78,12 +83,14 @@ public class AddData extends JFrame{
 		b1.setBounds(400, 370, 140, 40);
 		b1.setForeground(Color.white);
 		b1.setBackground(Color.black);
+		b1.addActionListener(this);
 		imgLab.add(b1);
 
 		b2 = new JButton("CANCEL");
 		b2.setBounds(560, 370, 140, 40);
 		b2.setForeground(Color.white);
 		b2.setBackground(Color.black);
+		b2.addActionListener(this);
 		imgLab.add(b2);
 		
 		
@@ -91,6 +98,32 @@ public class AddData extends JFrame{
 		setBounds(400, 200, 810, 536);
 		setVisible(true);
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(ae.getSource() == b1) {
+			String type = t1.getText();
+			String id = t2.getText();
+			String pass= t3.getText();
+			String link = t4.getText();
+			
+			String str = "insert into alldata values('"+type+"','"+id+"','"+pass+"','"+link+"')  ";
+			Conn c = new Conn();
+			try {
+				if(JOptionPane.showConfirmDialog(null, "Data Added") == 0) {					
+					c.s.executeUpdate(str);
+				}
+				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+		}else if(ae.getSource() == b2) {
+			new LoggedIn().setVisible(true);
+			this.setVisible(false);
+		}
+	}
+	
 
 	public static void main(String[] args) {
 			new AddData();

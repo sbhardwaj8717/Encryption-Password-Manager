@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 public class LoggedIn extends JFrame implements ActionListener{
 
 	
-	JButton b1,b2,b3,b4,b5;
+	JButton b1,b2,b3,b4, earlAz1;
 	public LoggedIn() {
 		
 		// SAVE PASSWORD, GET PASSWORD, VIEW ALL IN ENCRYPTION FORMAT + ORIGINAL, UPDATE CHANGES
@@ -56,20 +56,24 @@ public class LoggedIn extends JFrame implements ActionListener{
 		b4.addActionListener(this);
 		img1.add(b4);
 		
-		b5 = new JButton("LOG OUT");
-		b5.setBounds(70, 370, 300, 40);
-		b5.setBackground(new Color(220,220,220));
-		b5.setOpaque(false);
-		b5.setForeground(Color.red);
-		b5.addActionListener(this);
-		img1.add(b5);
+//		b5 = new JButton("LOG OUT");
+//		b5.setBounds(70, 370, 300, 40);
+//		b5.setBackground(new Color(220,220,220));
+//		b5.setOpaque(false);
+//		b5.setForeground(Color.red);
+//		b5.addActionListener(this);
+//		img1.add(b5);
 		
 		
-//		ImageIcon earlAz = new ImageIcon(ClassLoader.getSystemResource("image/earlaz.png"));
-//		JLabel earlAz1= new JLabel(earlAz);
-//		earlAz1.setBounds(185, 350, 70, 70);
-////		earlAz1.addActionListener(this);
-//		img1.add(earlAz1);
+		ImageIcon earlAz = new ImageIcon(ClassLoader.getSystemResource("image/earlaz.png"));
+		earlAz1= new JButton(earlAz);
+		earlAz1.setBounds(185, 350, 70, 70);
+		earlAz1.addActionListener(this);
+		earlAz1.setOpaque(false);
+		earlAz1.setBackground(new Color(0,0,0,0));
+		earlAz1.setBorder(null);
+//		earlAz1.mouseEnter(null,HAND_CURSOR , HAND_CURSOR);
+		img1.add(earlAz1);
 		
 		setLayout(null);
 		setBounds(550, 200, 474, 474);
@@ -81,14 +85,15 @@ public class LoggedIn extends JFrame implements ActionListener{
 	@Override 
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == b1) {
-			
+			new AddData().setVisible(true);
+			this.setVisible(false);
 		}else if(ae.getSource() == b2) {
 			
 		}else if(ae.getSource() == b3) {
 			
 		}else if(ae.getSource() == b4) {
 			
-		}else if(ae.getSource() == b5) {
+		}else if(ae.getSource() == earlAz1) {
 			new WelcomePage().setVisible(true);
 			this.setVisible(false);
 		}
