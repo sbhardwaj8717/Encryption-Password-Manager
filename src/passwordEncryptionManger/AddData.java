@@ -125,8 +125,8 @@ public class AddData extends JFrame implements ActionListener{
 	}
 	
 
-	public static void main(String[] args) {
-			new AddData();
-	}
+//	public static void main(String[] args) {
+//			new AddData();
+//	}
 
 }
